@@ -29,7 +29,7 @@ public class GUILoguin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtUser = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtPassword = new javax.swing.JPasswordField();
         btnIniciarSesion = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         lblRegistroUsuario = new javax.swing.JLabel();
@@ -85,24 +85,14 @@ public class GUILoguin extends javax.swing.JFrame {
         txtUser.setToolTipText("");
         txtUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 204), 1, true));
         txtUser.setCaretColor(new java.awt.Color(0, 0, 204));
-        txtUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUserActionPerformed(evt);
-            }
-        });
         jPanel1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 180, 48));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/key_password_lock.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, 46));
 
-        jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPasswordField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 255), 1, true));
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 180, 50));
+        txtPassword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtPassword.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 255), 1, true));
+        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 180, 50));
 
         btnIniciarSesion.setBackground(new java.awt.Color(0, 0, 255));
         btnIniciarSesion.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
@@ -137,16 +127,22 @@ public class GUILoguin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserActionPerformed
-
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
-
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-        // TODO add your handling code here:
+        co.unicauca.restaurante.cliente.infra.Security.usuario = new User(txtUser.getText(), txtPassword.getText());
+        UserRepository repo
+        //Aqui vendria el analizar si el usuario existe en el sistema
+        if ( ) {
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    GUISelector ins = new GUISelector();
+                    ins.setExtendedState(MAXIMIZED_BOTH);
+                    ins.setVisible(true);
+                }
+            });
+            this.dispose();
+        } else {
+            warningMessage("Contraseña incorrecta", "Atención");
+        }
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
     private void lblRegistroUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistroUsuarioMouseClicked
@@ -198,8 +194,8 @@ public class GUILoguin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel lblRegistroUsuario;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 
